@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>ScoorTeller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ScoorTeller</h1>
+            <p>Ramin Qoderian Lucas Burdorf</p>
+        </div>
+     </header> 
+
+
+ <nav>
+    <div class="container">
+        <ul>
+            <li><a href="{{ url_for('add_game') }}">ADD GAME</a></li>
+            <li><a href="{{ url_for('calculate_game') }}">CALCULATE GAME</a></li>
+            <li><a href="{{ url_for('information') }}">INFORMATION</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+   <main>
+       
+
+
+   <section class="quick-actions">
+       <div class="action-cards">
+            <div class="card">
+                 <h3>ADD GAME</h3>
+                 <p>ADD YOUR GAME TO THE DATABASE AND CARRY A LITTLE STONE BY</p>
+                 <a href="{{ url_for('add_game') }}">ADD GAME>GO TO ADD GAME</a>
+            </div>
+            <div class="card">
+                <h3>CALCULATE GAME</h3>
+                <P>CALCULATE SCORES OF UPCOMING GAMES</p>
+               <a href="{{ url_for('calculate_game') }}">GO TO CALCULATE</a>
+            </div>
+            <div class="card">
+                <h3>INFORMATION</h3>
+                <p>LEARN THE WHO'S AND THE HOW'S OF SCOORTELLER</p>
+                <a href="{{ url_for('information') }}">GO TO INFORMATION</a>
+            </div>
+       </div>
+   </section>
+ </div>
+
+<div class="previous-games">
+           <h2>PREVIOUS GAMES</h2>
+   </section>
+<table>
+    <thead>
+        <tr>
+            
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Score</th>
+            <th>Winners</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in weddies %}
+        <tr>
+         
+            <td>{{ row['team_1'] }}</td>
+            <td>{{ row['team_2'] }}</td>
+            <td>{{ row['score'] }}</td>
+            <td>{{ row['winners'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</main>
+<footer>
+    <div class="container">
+    <p>Ramin Qoderian Lucas Burdorf ScoorTeller</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
