@@ -59,7 +59,7 @@ def calculate_game():
             use_suggestion2 = True
         
         if not team1_input or not team2_input:
-            message = "Voer beide teamnamen in!"
+            message = "Fill in both team names!"
         else:
             conn = get_db_connection()
             
@@ -89,21 +89,21 @@ def calculate_game():
                 suggestion2 = matches2[0].title() if matches2 else None
                 
                 if suggestion1 or suggestion2:
-                    message = "Geen wedstrijden gevonden. Suggestie:"
+                    message = "No matches found. Suggeston:"
                 else:
-                    message = "Geen wedstrijden gevonden voor deze teams."
+                    message = "No matches found for these teams"
             elif len(rows1) == 0:
                 matches1 = get_close_matches(team1_input, all_teams, n=1, cutoff=0.6)
                 suggestion1 = matches1[0].title() if matches1 else None
                 if suggestion1:
-                    message = f"Team 1 niet gevonden. Bedoel je {suggestion1}?"
+                    message = f"Team 1 not found. Did you mean {suggestion1}?"
                 else:
                     rows1 = rows2  # Fallback
             elif len(rows2) == 0:
                 matches2 = get_close_matches(team2_input, all_teams, n=1, cutoff=0.6)
                 suggestion2 = matches2[0].title() if matches2 else None
                 if suggestion2:
-                    message = f"Team 2 niet gevonden. Bedoel je {suggestion2}?"
+                    message = f"Team 2 not found. Did you mean {suggestion2}?"
                 else:
                     rows2 = rows1  # Fallback
             
@@ -146,7 +146,7 @@ def calculate_game():
                     pred2 = round(avg2)
                     
                     winner = team1_input.title() if wins1 >= wins2 else team2_input.title()
-                    message = f"{winner} wint met {pred1}-{pred2} (gebaseerd op {count} wedstrijden)"
+                    message = f"{winner} wist with a score of {pred1}-{pred2} (based on {count} games)"
             
             conn.close()
     
@@ -163,4 +163,3 @@ def information():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
