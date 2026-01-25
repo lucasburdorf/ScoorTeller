@@ -34,6 +34,36 @@
                     </div>
 
                     <button type="submit" class="btn">CALCULATE</button>
+                     {% if suggestion1 %}
+<div style="color: orange; margin: 10px 0;">
+    Bedoel je <strong>{{ suggestion1 }}</strong> voor team 1? 
+    <form method="POST" style="display: inline;">
+        <input type="hidden" name="team1" value="{{ team1 }}">
+        <input type="hidden" name="team2" value="{{ team2 }}">
+        <input type="hidden" name="use_suggestion1" value="1">
+        <button type="submit" style="background: green; color: white; border: none; padding: 5px 10px;">Ja, gebruik dit</button>
+    </form>
+</div>
+{% endif %}
+
+{% if suggestion2 %}
+<div style="color: orange; margin: 10px 0;">
+    Bedoel je <strong>{{ suggestion2 }}</strong> voor team 2? 
+    <form method="POST" style="display: inline;">
+        <input type="hidden" name="team1" value="{{ team1 }}">
+        <input type="hidden" name="team2" value="{{ team2 }}">
+        <input type="hidden" name="use_suggestion2" value="1">
+        <button type="submit" style="background: green; color: white; border: none; padding: 5px 10px;">Ja, gebruik dit</button>
+    </form>
+</div>
+{% endif %}
+
+{% if message %}
+<div style="color: {{ 'green' if 'wint' in message else 'red' }}; margin: 20px 0; font-size: 18px;">
+    {{ message }}
+</div>
+{% endif %}
+
                 </form>
 
                 {% if message %}
