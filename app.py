@@ -146,7 +146,7 @@ def calculate_game():
                     pred2 = round(avg2)
                     
                     winner = team1_input.title() if wins1 >= wins2 else team2_input.title()
-                    message = f"{winner} wist with a score of {pred1}-{pred2} (based on {count} games)"
+                    message = f"{winner} wins with a score of {pred1}-{pred2} (based on {count} games)"
             
             conn.close()
     
@@ -163,3 +163,4 @@ def information():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
