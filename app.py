@@ -127,7 +127,7 @@ def calculate_game():
                 total_goals1 = total_goals2 = 0
                 count = wins1 = wins2 = 0
 
-                # let op: één backslash, niet dubbel
+        
                 score_pattern = re.compile(r'^\s*(\d+)[‑–-](\d+)\s*$')
 
                 for row in rows:
@@ -181,4 +181,5 @@ def information():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
