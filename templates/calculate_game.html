@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -34,17 +34,19 @@
                     </div>
 
                     <button type="submit" class="btn">CALCULATE</button>
-                     {% if suggestion1 %}
+                    {% if suggestion1 %}
 <div style="color: orange; margin: 10px 0;">
     Bedoel je <strong>{{ suggestion1 }}</strong> voor team 1? 
     <form method="POST" style="display: inline;">
         <input type="hidden" name="team1" value="{{ team1 }}">
         <input type="hidden" name="team2" value="{{ team2 }}">
+        <input type="hidden" name="suggestion1" value="{{ suggestion1 }}">
         <input type="hidden" name="use_suggestion1" value="1">
         <button type="submit" style="background: green; color: white; border: none; padding: 5px 10px;">Yes, use this</button>
     </form>
 </div>
 {% endif %}
+
 
 {% if suggestion2 %}
 <div style="color: orange; margin: 10px 0;">
@@ -52,11 +54,13 @@
     <form method="POST" style="display: inline;">
         <input type="hidden" name="team1" value="{{ team1 }}">
         <input type="hidden" name="team2" value="{{ team2 }}">
+        <input type="hidden" name="suggestion2" value="{{ suggestion2 }}">
         <input type="hidden" name="use_suggestion2" value="1">
-        <button type="submit" style="background: green; color: white; border: none; padding: 5px 10px;">Yes, use thi</button>
+        <button type="submit" style="background: green; color: white; border: none; padding: 5px 10px;">Yes, use this</button>
     </form>
 </div>
 {% endif %}
+
 
 {% if message %}
 <div style="color: {{ 'green' if 'wint' in message else 'red' }}; margin: 20px 0; font-size: 18px;">
