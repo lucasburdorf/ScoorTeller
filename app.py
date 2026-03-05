@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import re
+import os  
 from difflib import get_close_matches
 
 app = Flask(__name__)
-DATABASE = 'wedstrijden.db'
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, 'wedstrijden.db') 
+
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
 def get_db_connection():
@@ -181,5 +189,6 @@ def information():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
